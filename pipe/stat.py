@@ -8,10 +8,18 @@ for fileName1 in glob.glob('result/*.flagstat'):
     fin1 = open(fileName1)
     mapped = 0
     for lineIDX, line in enumerate(fin1):
-        if lineIDX == 0: total = int(line.rstrip('\n').split(' ')[0])
-        if lineIDX == 4: mapped = int(line.rstrip('\n').split(' ')[0])
-        if lineIDX == 5: paired = int(line.rstrip('\n').split(' ')[0])
-        if lineIDX == 8: properly = int(line.rstrip('\n').split(' ')[0])
+        if line.find('in total') != -1:
+            total = int(line.rstrip('\n').split(' ')[0])
+
+        if line.find('mapped (') != -1:
+            mapped = int(line.rstrip('\n').split(' ')[0])
+
+        if line.find('primary mapped') != -1:
+            paired = int(line.rstrip('\n').split(' ')[0])
+
+        if line.find('properly paired') != -1:
+            properly = int(line.rstrip('\n').split(' ')[0])
+     
     fin1.close()
 
     depth01 = 0
