@@ -36,7 +36,7 @@ bwa mem \
     ${readDir}/${readID}-P_1.fastq.gz \
     ${readDir}/${readID}-P_2.fastq.gz \
     2>  result/${readID}.bwa-memT011-pe.bam.log \
-    | ${SAMTOOLS} view --threads ${threadN} -bS \
+    | ${SAMTOOLS} view -@ ${threadN} -bS \
     -o  result/${readID}.bwa-memT011-pe.bam
 
 bash pipe/samtools-flagstat.sh ${threadN} ${readID}.bwa-memT011-pe bam
@@ -47,7 +47,7 @@ bwa mem \
     db/bwaDB/ref.fa \
     ${readDir}/${readID}-U_1.fastq.gz \
     2>  result/${readID}.bwa-memT011-se.1.bam.log \
-    | ${SAMTOOLS} view --threads ${threadN} -bS \
+    | ${SAMTOOLS} view -@ ${threadN} -bS \
     -o  result/${readID}.bwa-memT011-se.1.bam
     
 bash pipe/samtools-flagstat.sh ${threadN} ${readID}.bwa-memT011-se.1 bam
@@ -58,7 +58,7 @@ bwa mem \
     db/bwaDB/ref.fa \
     ${readDir}/${readID}-U_2.fastq.gz \
     2>  result/${readID}.bwa-memT011-se.2.bam.log \
-    | ${SAMTOOLS} view --threads ${threadN} -bS \
+    | ${SAMTOOLS} view -@ ${threadN} -bS \
     -o  result/${readID}.bwa-memT011-se.2.bam
     
 bash pipe/samtools-flagstat.sh ${threadN} ${readID}.bwa-memT011-se.2 bam

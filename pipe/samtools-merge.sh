@@ -19,7 +19,7 @@ else
 fi
 
 samtools merge \
-    --threads ${threadN} \
+    -@ ${threadN} \
     -o result/${ofile}.bam \
     result/in1.sam \
     result/in2.sam \

@@ -31,7 +31,7 @@ fi
 
 #command
 ${SAMTOOLS} fixmate \
-    --threads ${threadN} \
+    -@ ${threadN} \
     -m \
     result/${readID}.${fileExt} \
     result/${readID}.fixmate.bam \

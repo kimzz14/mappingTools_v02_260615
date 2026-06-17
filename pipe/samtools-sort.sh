@@ -31,7 +31,7 @@ fi
 
 #command
 ${SAMTOOLS} sort \
-    --threads ${threadN} \
+    -@ ${threadN} \
     -o result/${readID}.sorted.bam \
        result/${readID}.${fileExt} \
     1> result/${readID}.sorted.bam.log \

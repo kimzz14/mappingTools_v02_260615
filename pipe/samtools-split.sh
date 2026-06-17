@@ -26,12 +26,12 @@ fi
 #command
 mkdir -p result/${readID}.byChrom
 
-${SAMTOOLS} view --threads ${threadN} -b -F 2 result/${readID}.bam > result/${readID}.byChrom/${readID}.unproperly.bam &
-${SAMTOOLS} view --threads ${threadN} -b -f 4 result/${readID}.bam > result/${readID}.byChrom/${readID}.unmapped.bam &
+${SAMTOOLS} view -@ ${threadN} -b -F 2 result/${readID}.bam > result/${readID}.byChrom/${readID}.unproperly.bam &
+${SAMTOOLS} view -@ ${threadN} -b -f 4 result/${readID}.bam > result/${readID}.byChrom/${readID}.unmapped.bam &
 
 #command
 while read -r chrom chromLen rest; do
-    ${SAMTOOLS} view --threads ${threadN} -b -F 2048 result/${readID}.bam ${chrom} > result/${readID}.byChrom/${readID}.${chrom}.bam &
+    ${SAMTOOLS} view -@ ${threadN} -b -F 2048 result/${readID}.bam ${chrom} > result/${readID}.byChrom/${readID}.${chrom}.bam &
 done < "db/ref.fa.fai"
 wait
 

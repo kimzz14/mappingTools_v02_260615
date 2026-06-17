@@ -36,7 +36,7 @@ bwa mem \
     db/bwaDB/ref.fa \
     ${readDir}/${readID}.fastq.gz \
     2>  result/${readID}.bwa-memT102.bam.log \
-    | ${SAMTOOLS} view --threads ${threadN} -bS \
+    | ${SAMTOOLS} view -@ ${threadN} -bS \
     -o  result/${readID}.bwa-memT102.bam
 
 bash pipe/samtools-flagstat.sh ${threadN} ${readID}.bwa-memT102 bam

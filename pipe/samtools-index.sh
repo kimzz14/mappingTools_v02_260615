@@ -25,7 +25,7 @@ fi
 
 #command
 ${SAMTOOLS} index \
-    --threads ${threadN} \
+    -@ ${threadN} \
     -c  result/${readID}.bam \
     1>  result/${readID}.bam.csi.log \
     2>  result/${readID}.bam.csi.err

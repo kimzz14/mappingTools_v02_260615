@@ -31,7 +31,7 @@ fi
 
 #command
 ${SAMTOOLS} flagstat \
-    --threads ${threadN} \
+    -@ ${threadN} \
        result/${readID}.${fileExt} \
     1> result/${readID}.${fileExt}.flagstat \
     2> result/${readID}.${fileExt}.flagstat.log
